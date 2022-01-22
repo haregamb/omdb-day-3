@@ -1,6 +1,7 @@
+import React from 'react'
 import "./App.css";
 import MovieCard from "./Components/MovieCard/MovieCard";
-import MovieDetail from "./Components/MovieDetail/MovieDetail";
+ import MovieDetails from './Components/MovieDetail/MovieDetail.js';
 import { getMovieDetailsById, getMoviesBySearchTerm } from "./utils/Utils";
 
 function App() {
@@ -17,30 +18,30 @@ function App() {
     movieData = JSON.parse(sessionStorage.getItem("movieData"));
     isMovieData = true;
   }
- window.onload = async () => {
-    const movieAPITerm = await getMoviesBySearchTerm("spiderman");
-    sessionStorage.setItem("movieDataa", JSON.stringify(movieAPITerm));
-  };
-  if (sessionStorage.getItem("movieDataa" )) {
-    movieDataa = JSON.parse(sessionStorage.getItem("movieDataa"));
-    isMovieDataa = true;
-  }
+  // window.onload = async () => {
+  //   const movieAPITerm = await getMoviesBySearchTerm("spiderman");
+  //   sessionStorage.setItem("movieDataa", JSON.stringify(movieAPITerm));
+  // };
+  // if (sessionStorage.getItem("movieDataa")) {
+  //   movieDataa = JSON.parse(sessionStorage.getItem("movieDataa"));
+  //   isMovieDataa = true;
+  // }
 
   console.log(movieData);
   
   return (
     <div className="App">
-      {isMovieData ? (
-        <MovieCard
+      {isMovieData ? ( 
+         <MovieCard
           title={movieData.Title}
           type={movieData.Type}
           posterUrl={movieData.Poster}
         />
       ) : (
-        "Please refresh"
-      )}
+        "Please refresh" 
+       )}
       {isMovieData ? (
-        <MovieDetail
+        <MovieDetails
           title={movieData.Title}
           rated={movieData.Type}
           posterUrl={movieData.Poster}
@@ -50,7 +51,7 @@ function App() {
           actors={movieData.Actors}
           rating={movieData.imdbRating}
           rated={movieData.Rated}
-        />
+        /> 
       ) : (
         "Please refresh"
       )}

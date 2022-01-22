@@ -1,14 +1,15 @@
 import React from 'react'
+import '../MovieCard/MovieCard.css'
+const MovieCard = ({title, type,posterUrl}) =>{
+    return(
 
-const MovieCard=({posterUrl,title,type})=>  (
-        <div>
-            <img
+    <div id = 'card'>
+         <img
             src={posterUrl}
             alt={`{title}poster`}/>
             <h2>{title}</h2>
             <span>{type}</span>
-        </div>
+    </div>
     )
-
-
+}
 export default MovieCard;
